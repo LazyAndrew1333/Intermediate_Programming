@@ -8,7 +8,7 @@ public class app {
 	static boolean 	inputComplete 	= false;
 	static boolean 	containsDigit 	= false;
 	static boolean	loggerFirstPass	= true;
-	static int 		attempt			= 0;
+	static int 		attempt			= 2;
 	static int		lineToEdit 		= 11;
 	static int		truePermutation	= 0;
 	static String 	input 			= "";
@@ -91,7 +91,7 @@ public class app {
 	
 		// This method is used to print the log
 		// to the history.txt file.
-	static void appendStrToFile(String str) {						// Called from line 171. The value of the parameter comes from the input.
+	static void appendStrToFile() {						// Called from line 171. The value of the parameter comes from the input.
 		File historyLog = new File(fileName);							// Instantiated a new file object.
 		if (!historyLog.exists()) {										// An if condition that checks if the specified file do exist.
 			try {														// If not, then it will execute createNewFile method which will then create the file.
@@ -150,9 +150,9 @@ public class app {
 			input = sc.next();
 			System.out.println();
 			
-			checkInputForNumber(input);								// Na sa line 27
+			checkInputForNumber(input);								// checkInputForNumber()	:	line 27
 			
-			if (containsDigit != true) {
+			if (containsDigit == false) {
 				inputComplete = true;
 				sc.close();
 			} else {
@@ -162,13 +162,13 @@ public class app {
 		}
 		
 		try {
-			attemptCounter();										// Na sa line 119
-			outputLogger(factorial(input.length()), input);			// outputLogger na sa line 51 | factorial na sa line 39
-			printDistinctPermutn(input.toLowerCase() , "");			// Na sa line 67
-			outputLogger(factorial(input.length()), input);			// outputLogger na sa line 51 | factorial na sa line 39
+			attemptCounter();										// attemptCounter() 		: 	line 119
+			outputLogger(factorial(input.length()), input);			// outputLogger() 			:	line 51		| factorial()	:	line 39
+			printDistinctPermutn(input.toLowerCase() , "");			// printDistinctPermutn()	: 	line 67
+			outputLogger(factorial(input.length()), input);			// outputLogger() 			: 	line 51 	| factorial()	: 	line 39
 			System.out.println(log);
 			
-			appendStrToFile(input);									// Na sa line 94
+			appendStrToFile();										// appendStrToFile()		:	line 94
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
